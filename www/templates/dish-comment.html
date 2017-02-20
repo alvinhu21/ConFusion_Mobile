@@ -1,0 +1,39 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">New Comment</h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="closeModal()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<form id="commentForm" name="commentForm"
+				ng-submit="submitComment()" novalidate>
+			<div class="list">
+				<label class="item item-input">
+					<div style="width:200px; float:left"> Your Name </div>
+					<input type="text" name="author" ng-model="mycomment.author" required></input>
+					<span style="Color:red" ng-if="commentForm.author.$error.required  && !commentForm.author.$pristine">Your name is required.</span>
+				</label>
+				
+				
+				<label class="item" >
+					<div style="width:200px; float:left">Number of Stars </div> 
+					<label for="rating">Rating
+						<select id="rating" ng-model="mycomment.rating">
+							<option ng-repeat="star in [1,2,3,4,5]" >{{star}}</option>
+						<select>
+					</label>
+				</label>
+
+				<label  class="item item-input">
+					<div style="width:200px; float:left"> Your Comments </div>
+					<textarea style="width:700px; height:150px" name="mycomment" ng-model="mycomment.comment" required></textarea>
+					<div style="Color:red" ng-if="commentForm.comment.$error.required  && !commentForm.comment.$pristine">Your comments are required.</div>
+				</label>
+				<label class="item">
+				<input class="button button-block button-positive" ng-disabled="commentForm.$invalid" type="submit" value="Submit Comment"></input>
+				</label>
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>
